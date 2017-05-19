@@ -12,11 +12,12 @@ class AddEventViewController: UIViewController, UIImagePickerControllerDelegate,
     //
     let dayList = [ "Sunday", "Monday", "Tuesday", "Wednessday", "Thursday", "Friday", "Saturday"]
     var eventAdd: [EventLine]?
+    //var image: UIImage?
     //
     @IBOutlet weak var imageEvent: UIImageView!
+    //@IBOutlet weak var imageEvent: UIImageView!
     @IBOutlet weak var titleEvent: UITextField!
     @IBOutlet weak var descriptionEvent: UITextField!
-    
     @IBOutlet weak var dayPicked: UIPickerView!
     //
     let imagePicker = UIImagePickerController()
@@ -39,8 +40,18 @@ class AddEventViewController: UIViewController, UIImagePickerControllerDelegate,
     
     //
     @IBAction func addImage(_ sender: UIButton) {
-        let actionSheet = UIAlertController(title: "Photo Source", message: "Choose a source", preferredStyle: .actionSheet)
+        //
+        /*
+        let picker : UIImagePickerController = UIImagePickerController()
+        picker.sourceType = UIImagePickerControllerSourceType.photoLibrary
+        picker.mediaTypes = UIImagePickerController.availableMediaTypes(for: .photoLibrary)!
+        picker.delegate = self
+        picker.allowsEditing = false
+        self.present(picker, animated: true, completion: nil)
+        */
         
+        let actionSheet = UIAlertController(title: "Photo Source", message: "Choose a source", preferredStyle: .actionSheet)
+        //Take a photo by camera
         actionSheet.addAction(UIAlertAction(title: "Camera", style: .default, handler: { (action:UIAlertAction) in
             
             if UIImagePickerController.isSourceTypeAvailable(.camera) {
@@ -51,35 +62,30 @@ class AddEventViewController: UIViewController, UIImagePickerControllerDelegate,
             }
             
         }))
-        
+        //choose photo from PhotoLibrary
         actionSheet.addAction(UIAlertAction(title: "Photo Library", style: .default, handler: { (action:UIAlertAction) in
             self.imagePicker.sourceType = .photoLibrary
             self.present(self.imagePicker, animated: true, completion: nil)
         }))
-        
+        //Cancel
         actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-        
         self.present(actionSheet, animated: true, completion: nil)
+ 
     }
+ 
     //
-    @IBAction func addEvent(_ sender: UIButton) {
-        
-        
-    }
     
-    //
-    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
-        if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
-            imageEvent.contentMode = .center
-            imageEvent.image = pickedImage
-        }
-        dismiss(animated: true, completion: nil)
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        let image = info[UIImagePickerControllerOriginalImage] as? UIImage
+        self.imageEvent.image = image
+        self.dismiss(animated: true, completion: nil)
     }
-    
-    private func imagePickerControllerDidCancel(picker: UIImagePickerController) {
-        dismiss(animated: true, completion: nil)
-    }
+ 
     //
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        picker.dismiss(animated: true, completion: nil)
+    }
+ 
     //Số components của PickerView
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
@@ -101,8 +107,7 @@ class AddEventViewController: UIViewController, UIImagePickerControllerDelegate,
     {
         let dayInWeek = eventAdd?[dayPicked.selectedRow(inComponent: 0)]
         
-        dayInWeek?.events.append(Event(titled: self.titleEvent.text!, description:  self.descriptionEvent.text!, eventImaged: #imageLiteral(resourceName: "ios")))
-        
+        dayInWeek?.events.append(Event(titled: self.titleEvent.text!, description:  self.descriptionEvent.text!, eventImaged: imageEvent.image!))
         _ = navigationController?.popViewController(animated: true)
     }
     
@@ -113,16 +118,9 @@ class AddEventViewController: UIViewController, UIImagePickerControllerDelegate,
         let calendar = Calendar.current
         
         let day = calendar.component(.day, from: currentDate)
-        var month = calendar.component(.month, from: currentDate)
-        var year = calendar.component(.year, from: currentDate)
-        
-        if month < 3 {
-            month += 12
-            year -= 1
-        }
-        
-        return (abs(day + 2 * month + 3 * (month + 1) / 5 + year + year / 4) % 7)
+        return day
     }
+    
     //
     func setDayEvent() {
         let numberOfDay = getCurrenntDay()

@@ -202,28 +202,33 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NoT-jc-m98">
-                                <rect key="frame" x="0.0" y="611" width="375" height="36"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NoT-jc-m98">
+                                <rect key="frame" x="0.0" y="597" width="375" height="50"/>
                                 <color key="backgroundColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="P5h-dj-n91"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="Add Event">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="addEvent:" destination="b3I-OE-e7Y" eventType="touchUpInside" id="vaZ-uW-IMM"/>
                                     <action selector="btn_addEvent:" destination="b3I-OE-e7Y" eventType="touchUpInside" id="b0H-Bc-mgf"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Flb-sO-man">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Flb-sO-man">
                                 <rect key="frame" x="0.0" y="64" width="375" height="200"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.7019608021" green="0.7019608021" blue="0.7019608021" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="kK3-L1-74Z"/>
+                                </constraints>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AYi-Ws-AKp">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AYi-Ws-AKp">
                                 <rect key="frame" x="0.0" y="272" width="375" height="50"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="611-zc-Swb"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="Add Image">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -264,12 +269,28 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PJc-ct-GTK">
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PJc-ct-GTK">
                                 <rect key="frame" x="0.0" y="491" width="375" height="100"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="wNf-90-xch"/>
+                                </constraints>
                             </pickerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="PJc-ct-GTK" firstAttribute="leading" secondItem="9G6-bX-XY3" secondAttribute="leading" id="3qo-Y6-5Db"/>
+                            <constraint firstAttribute="trailing" secondItem="NoT-jc-m98" secondAttribute="trailing" id="4B2-Fm-pb8"/>
+                            <constraint firstAttribute="trailing" secondItem="AYi-Ws-AKp" secondAttribute="trailing" id="AcX-Gf-sQk"/>
+                            <constraint firstItem="NoT-jc-m98" firstAttribute="leading" secondItem="9G6-bX-XY3" secondAttribute="leading" id="EFR-bA-0Nb"/>
+                            <constraint firstItem="ZyX-pV-1k4" firstAttribute="top" secondItem="NoT-jc-m98" secondAttribute="bottom" constant="20" id="FBP-ba-3hv"/>
+                            <constraint firstItem="AYi-Ws-AKp" firstAttribute="top" secondItem="Flb-sO-man" secondAttribute="bottom" constant="8" id="HvR-Ch-5tr"/>
+                            <constraint firstItem="Flb-sO-man" firstAttribute="leading" secondItem="9G6-bX-XY3" secondAttribute="leading" id="JGr-B4-fBU"/>
+                            <constraint firstItem="AYi-Ws-AKp" firstAttribute="leading" secondItem="9G6-bX-XY3" secondAttribute="leading" id="JKN-lQ-od7"/>
+                            <constraint firstItem="Flb-sO-man" firstAttribute="top" secondItem="iES-C6-Yv3" secondAttribute="bottom" id="KoZ-fU-Yly"/>
+                            <constraint firstItem="NoT-jc-m98" firstAttribute="top" secondItem="PJc-ct-GTK" secondAttribute="bottom" constant="6" id="U3w-Cm-0xG"/>
+                            <constraint firstAttribute="trailing" secondItem="Flb-sO-man" secondAttribute="trailing" id="kYd-eA-ycc"/>
+                            <constraint firstAttribute="trailing" secondItem="PJc-ct-GTK" secondAttribute="trailing" id="rng-jv-CLx"/>
+                        </constraints>
                         <connections>
                             <action selector="userTapOnScreen:" destination="b3I-OE-e7Y" eventType="touchDown" id="GwX-GJ-jRp"/>
                         </connections>
@@ -277,6 +298,7 @@
                     <connections>
                         <outlet property="dayPicked" destination="PJc-ct-GTK" id="9C6-B6-1kx"/>
                         <outlet property="descriptionEvent" destination="3Vm-FI-cLQ" id="d5M-vA-wRh"/>
+                        <outlet property="imageEvent" destination="Flb-sO-man" id="4BE-fg-W8m"/>
                         <outlet property="titleEvent" destination="o1w-Kf-9vt" id="shc-Q0-dgu"/>
                     </connections>
                 </viewController>
